@@ -407,553 +407,316 @@ En el sistema solo existen dos roles de acceso:
 
 ---
 
-## Escenarios de calidad
+# Escenarios de Calidad
 
 ### ESC-CAL-SEG-0001
 
-**Código**  
-ESC-CAL-SEG-0001
-
-**Nombre**  
-Inicio de sesión exitoso
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autenticación
-
-**Característica**  
-El sistema debe validar la identidad del empleado antes de permitir el acceso a las funciones del inventario.
-
-**Objetivo**  
-Comprobar que un empleado registrado pueda autenticarse con credenciales válidas.
-
-**Criterios de éxito**  
-El sistema autentica al empleado y lo redirige a la pantalla principal.
-
-**Prerrequisitos**  
-1. El empleado existe.  
-2. Usuario y contraseña son correctos.  
-3. El servicio de autenticación está disponible.
-
-**Requisito relacionado**  
-RF-65 / RU-56
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0001 |
+| **Nombre** | Inicio de sesión exitoso |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autenticación |
+| **Característica** | El sistema debe validar la identidad del empleado antes de permitir el acceso a las funciones del inventario. |
+| **Objetivo** | Comprobar que un empleado registrado pueda autenticarse con credenciales válidas. |
+| **Criterios de éxito** | El sistema autentica al empleado y lo redirige a la pantalla principal. |
+| **Prerrequisitos** | 1. El empleado existe.<br>2. Usuario y contraseña son correctos.<br>3. El servicio de autenticación está disponible. |
+| **Requisito relacionado** | RF-65 / RU-56 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Ingresa usuario y contraseña válidos y selecciona ingresar. | Operación normal | Módulo de autenticación | Valida las credenciales y permite el acceso. | El acceso se concede únicamente cuando las credenciales coinciden con un empleado registrado. |
 
+---
+
 ### ESC-CAL-SEG-0002
 
-**Código**  
-ESC-CAL-SEG-0002
-
-**Nombre**  
-Inicio de sesión rechazado por credenciales incorrectas
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autenticación
-
-**Característica**  
-El sistema debe validar la identidad del empleado antes de permitir el acceso a las funciones del inventario.
-
-**Objetivo**  
-Evitar el acceso cuando el usuario o la contraseña no son válidos sin revelar cuál dato falló.
-
-**Criterios de éxito**  
-El sistema rechaza el ingreso y muestra un mensaje genérico.
-
-**Prerrequisitos**  
-1. Se presenta el formulario de login.  
-2. Al menos una credencial es incorrecta.
-
-**Requisito relacionado**  
-RF-65 / RU-56
-
-**Tipo de escenario**  
-Fallo controlado
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0002 |
+| **Nombre** | Inicio de sesión rechazado por credenciales incorrectas |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autenticación |
+| **Característica** | El sistema debe validar la identidad del empleado antes de permitir el acceso a las funciones del inventario. |
+| **Objetivo** | Evitar el acceso cuando el usuario o la contraseña no son válidos sin revelar cuál dato falló. |
+| **Criterios de éxito** | El sistema rechaza el ingreso y muestra un mensaje genérico. |
+| **Prerrequisitos** | 1. Se presenta el formulario de login.<br>2. Al menos una credencial es incorrecta. |
+| **Requisito relacionado** | RF-65 / RU-56 |
+| **Tipo de escenario** | Fallo controlado |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Ingresa credenciales incorrectas e intenta iniciar sesión. | Operación con falla en autenticación | Módulo de autenticación | Rechaza la autenticación y mantiene al usuario fuera del sistema. | No se concede acceso y el mensaje no identifica si falló el usuario o la contraseña. |
 
+---
+
 ### ESC-CAL-SEG-0003
 
-**Código**  
-ESC-CAL-SEG-0003
-
-**Nombre**  
-Generación de token tras login exitoso
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autenticación
-
-**Característica**  
-El sistema debe emitir un token de autenticación solamente después de una autenticación exitosa.
-
-**Objetivo**  
-Asegurar que una sesión válida quede asociada al empleado autenticado.
-
-**Criterios de éxito**  
-Se genera un token válido asociado al empleado.
-
-**Prerrequisitos**  
-1. Las credenciales fueron validadas correctamente.
-
-**Requisito relacionado**  
-RF-66 / RU-56
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0003 |
+| **Nombre** | Generación de token tras login exitoso |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autenticación |
+| **Característica** | El sistema debe emitir un token de autenticación solamente después de una autenticación exitosa. |
+| **Objetivo** | Asegurar que una sesión válida quede asociada al empleado autenticado. |
+| **Criterios de éxito** | Se genera un token válido asociado al empleado. |
+| **Prerrequisitos** | 1. Las credenciales fueron validadas correctamente. |
+| **Requisito relacionado** | RF-66 / RU-56 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Completa correctamente la validación de credenciales. | Operación normal | Módulo de autenticación | Emite un token asociado al empleado autenticado. | Todo login exitoso produce un token válido asociado al empleado. |
 
+---
+
 ### ESC-CAL-SEG-0004
 
-**Código**  
-ESC-CAL-SEG-0004
-
-**Nombre**  
-No generación de token ante login fallido
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autenticación
-
-**Característica**  
-El sistema debe emitir un token de autenticación solamente después de una autenticación exitosa.
-
-**Objetivo**  
-Impedir que un intento de autenticación fallido produzca una sesión válida.
-
-**Criterios de éxito**  
-No se genera token alguno.
-
-**Prerrequisitos**  
-1. La validación de credenciales ha fallado.
-
-**Requisito relacionado**  
-RF-66 / RU-56
-
-**Tipo de escenario**  
-Restricción
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0004 |
+| **Nombre** | No generación de token ante login fallido |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autenticación |
+| **Característica** | El sistema debe emitir un token de autenticación solamente después de una autenticación exitosa. |
+| **Objetivo** | Impedir que un intento de autenticación fallido produzca una sesión válida. |
+| **Criterios de éxito** | No se genera token alguno. |
+| **Prerrequisitos** | 1. La validación de credenciales ha fallado. |
+| **Requisito relacionado** | RF-66 / RU-56 |
+| **Tipo de escenario** | Restricción |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Recibe un resultado de login fallido. | Operación con falla en autenticación | Módulo de autenticación | Finaliza el intento sin emitir token. | La respuesta de autenticación fallida no contiene un token válido. |
 
+---
+
 ### ESC-CAL-SEG-0005
 
-**Código**  
-ESC-CAL-SEG-0005
-
-**Nombre**  
-Expiración de una sesión
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Gestión de sesión
-
-**Característica**  
-La sesión del empleado debe manejarse mediante un token con expiración para evitar sesiones indefinidas.
-
-**Objetivo**  
-Asegurar que un token vencido no permita continuar ejecutando operaciones protegidas.
-
-**Criterios de éxito**  
-El sistema exige una nueva autenticación cuando el token ha expirado.
-
-**Prerrequisitos**  
-1. El empleado inició sesión.  
-2. El token tiene expiración configurada.  
-3. El token ya venció.
-
-**Requisito relacionado**  
-RNF-10
-
-**Tipo de escenario**  
-Restricción
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0005 |
+| **Nombre** | Expiración de una sesión |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Gestión de sesión |
+| **Característica** | La sesión del empleado debe manejarse mediante un token con expiración para evitar sesiones indefinidas. |
+| **Objetivo** | Asegurar que un token vencido no permita continuar ejecutando operaciones protegidas. |
+| **Criterios de éxito** | El sistema exige una nueva autenticación cuando el token ha expirado. |
+| **Prerrequisitos** | 1. El empleado inició sesión.<br>2. El token tiene expiración configurada.<br>3. El token ya venció. |
+| **Requisito relacionado** | RNF-10 |
+| **Tipo de escenario** | Restricción |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Intenta ejecutar una operación protegida con un token expirado. | Operación con falla en gestión de sesión | Módulo de autenticación | Rechaza la sesión vencida y solicita autenticación nuevamente. | Ninguna operación protegida se ejecuta usando un token vencido. |
 
+---
+
 ### ESC-CAL-SEG-0006
 
-**Código**  
-ESC-CAL-SEG-0006
-
-**Nombre**  
-Almacenamiento protegido de contraseñas
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Confidencialidad
-
-**Característica**  
-Las contraseñas de los empleados deben almacenarse cifradas y no como texto legible.
-
-**Objetivo**  
-Evitar que una contraseña quede expuesta en texto legible dentro del almacenamiento del sistema.
-
-**Criterios de éxito**  
-La contraseña persistida no corresponde al texto ingresado por el empleado.
-
-**Prerrequisitos**  
-1. Se crea o actualiza una contraseña válida.
-
-**Requisito relacionado**  
-RNF-10
-
-**Tipo de escenario**  
-Restricción
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0006 |
+| **Nombre** | Almacenamiento protegido de contraseñas |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Confidencialidad |
+| **Característica** | Las contraseñas de los empleados deben almacenarse cifradas y no como texto legible. |
+| **Objetivo** | Evitar que una contraseña quede expuesta en texto legible dentro del almacenamiento del sistema. |
+| **Criterios de éxito** | La contraseña persistida no corresponde al texto ingresado por el empleado. |
+| **Prerrequisitos** | 1. Se crea o actualiza una contraseña válida. |
+| **Requisito relacionado** | RNF-10 |
+| **Tipo de escenario** | Restricción |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Persiste la contraseña de una cuenta. | Operación con falla en gestión de credenciales | Módulo de autenticación | Almacena una representación cifrada de la contraseña. | Una revisión del registro persistido no permite obtener la contraseña como texto legible. |
 
+---
+
 ### ESC-CAL-SEG-0007
 
-**Código**  
-ESC-CAL-SEG-0007
-
-**Nombre**  
-Administrador crea una cuenta de empleado
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autorización
-
-**Característica**  
-La creación de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador.
-
-**Objetivo**  
-Permitir que un Administrador registre una nueva cuenta con datos válidos.
-
-**Criterios de éxito**  
-La cuenta queda creada con su TipoEmpleado y se confirma la operación.
-
-**Prerrequisitos**  
-1. El solicitante está autenticado.  
-2. Su TipoEmpleado es Administrador.  
-3. Los datos son válidos.
-
-**Requisito relacionado**  
-RF-01 / RNF-11 / RN-11
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0007 |
+| **Nombre** | Administrador crea una cuenta de empleado |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autorización |
+| **Característica** | La creación de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador. |
+| **Objetivo** | Permitir que un Administrador registre una nueva cuenta con datos válidos. |
+| **Criterios de éxito** | La cuenta queda creada con su TipoEmpleado y se confirma la operación. |
+| **Prerrequisitos** | 1. El solicitante está autenticado.<br>2. Su TipoEmpleado es Administrador.<br>3. Los datos son válidos. |
+| **Requisito relacionado** | RF-01 / RNF-11 / RN-11 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Administrador | Solicita crear una cuenta de empleado. | Operación normal | Módulo de empleados | Crea la cuenta y muestra confirmación. | La cuenta queda registrada una sola vez con los datos suministrados. |
 
+---
+
 ### ESC-CAL-SEG-0008
 
-**Código**  
-ESC-CAL-SEG-0008
-
-**Nombre**  
-Empleado intenta crear una cuenta
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autorización
-
-**Característica**  
-La creación de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador.
-
-**Objetivo**  
-Impedir que un usuario sin privilegios administrativos cree cuentas.
-
-**Criterios de éxito**  
-La operación es rechazada y no se crea ningún empleado.
-
-**Prerrequisitos**  
-1. El solicitante está autenticado como Empleado.
-
-**Requisito relacionado**  
-RF-01 / RNF-11 / RN-11
-
-**Tipo de escenario**  
-Fallo controlado
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0008 |
+| **Nombre** | Empleado intenta crear una cuenta |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autorización |
+| **Característica** | La creación de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador. |
+| **Objetivo** | Impedir que un usuario sin privilegios administrativos cree cuentas. |
+| **Criterios de éxito** | La operación es rechazada y no se crea ningún empleado. |
+| **Prerrequisitos** | 1. El solicitante está autenticado como Empleado. |
+| **Requisito relacionado** | RF-01 / RNF-11 / RN-11 |
+| **Tipo de escenario** | Fallo controlado |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Intenta crear una cuenta de empleado. | Operación con falla en gestión de empleados | Módulo de empleados | Bloquea la operación y muestra un mensaje de permisos insuficientes. | La cantidad de cuentas permanece sin cambios. |
 
+---
+
 ### ESC-CAL-SEG-0009
 
-**Código**  
-ESC-CAL-SEG-0009
-
-**Nombre**  
-Administrador elimina una cuenta de empleado
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autorización
-
-**Característica**  
-La eliminación física de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador.
-
-**Objetivo**  
-Permitir la baja física de una cuenta cuando la solicita un Administrador.
-
-**Criterios de éxito**  
-El registro del empleado es eliminado y se confirma la operación.
-
-**Prerrequisitos**  
-1. Administrador autenticado.  
-2. La cuenta objetivo existe.
-
-**Requisito relacionado**  
-RF-02 / RNF-11 / RN-11 / RN-13
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0009 |
+| **Nombre** | Administrador elimina una cuenta de empleado |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autorización |
+| **Característica** | La eliminación física de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador. |
+| **Objetivo** | Permitir la baja física de una cuenta cuando la solicita un Administrador. |
+| **Criterios de éxito** | El registro del empleado es eliminado y se confirma la operación. |
+| **Prerrequisitos** | 1. Administrador autenticado.<br>2. La cuenta objetivo existe. |
+| **Requisito relacionado** | RF-02 / RNF-11 / RN-11 / RN-13 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Administrador | Solicita eliminar una cuenta de empleado. | Operación normal | Módulo de empleados | Elimina físicamente el registro y confirma la acción. | La cuenta deja de existir como registro activo del sistema. |
 
+---
+
 ### ESC-CAL-SEG-0010
 
-**Código**  
-ESC-CAL-SEG-0010
-
-**Nombre**  
-Empleado intenta eliminar una cuenta
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autorización
-
-**Característica**  
-La eliminación física de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador.
-
-**Objetivo**  
-Impedir que un usuario no administrador elimine cuentas.
-
-**Criterios de éxito**  
-El sistema rechaza la operación y conserva la cuenta.
-
-**Prerrequisitos**  
-1. Usuario autenticado como Empleado.  
-2. La cuenta objetivo existe.
-
-**Requisito relacionado**  
-RF-02 / RNF-11 / RN-11
-
-**Tipo de escenario**  
-Fallo controlado
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0010 |
+| **Nombre** | Empleado intenta eliminar una cuenta |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autorización |
+| **Característica** | La eliminación física de cuentas de empleado debe estar restringida exclusivamente a usuarios de tipo Administrador. |
+| **Objetivo** | Impedir que un usuario no administrador elimine cuentas. |
+| **Criterios de éxito** | El sistema rechaza la operación y conserva la cuenta. |
+| **Prerrequisitos** | 1. Usuario autenticado como Empleado.<br>2. La cuenta objetivo existe. |
+| **Requisito relacionado** | RF-02 / RNF-11 / RN-11 |
+| **Tipo de escenario** | Fallo controlado |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Solicita eliminar una cuenta. | Operación con falla en gestión de empleados | Módulo de empleados | Bloquea la acción y muestra permisos insuficientes. | La cuenta objetivo permanece registrada sin cambios. |
 
+---
+
 ### ESC-CAL-SEG-0011
 
-**Código**  
-ESC-CAL-SEG-0011
-
-**Nombre**  
-Intento de modificación libre de TipoEmpleado
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Autorización
-
-**Característica**  
-El catálogo TipoEmpleado no debe quedar abierto a edición libre para evitar escalamiento de privilegios.
-
-**Objetivo**  
-Evitar que un usuario pueda modificar libremente el catálogo que determina privilegios.
-
-**Criterios de éxito**  
-El sistema no permite una modificación libre del catálogo TipoEmpleado.
-
-**Prerrequisitos**  
-1. Existe un usuario autenticado.  
-2. Se intenta acceder a una edición no autorizada del catálogo.
-
-**Requisito relacionado**  
-RN-12
-
-**Tipo de escenario**  
-Restricción
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0011 |
+| **Nombre** | Intento de modificación libre de TipoEmpleado |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Autorización |
+| **Característica** | El catálogo TipoEmpleado no debe quedar abierto a edición libre para evitar escalamiento de privilegios. |
+| **Objetivo** | Evitar que un usuario pueda modificar libremente el catálogo que determina privilegios. |
+| **Criterios de éxito** | El sistema no permite una modificación libre del catálogo TipoEmpleado. |
+| **Prerrequisitos** | 1. Existe un usuario autenticado.<br>2. Se intenta acceder a una edición no autorizada del catálogo. |
+| **Requisito relacionado** | RN-12 |
+| **Tipo de escenario** | Restricción |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Intenta crear o modificar libremente valores de TipoEmpleado. | Operación con falla en gestión de roles de empleado | Módulo de empleados | Impide la edición libre del catálogo. | No se modifica TipoEmpleado mediante una operación de edición libre; el mecanismo exacto de administración está pendiente de definición. |
 
+---
+
 ### ESC-CAL-SEG-0012
 
-**Código**  
-ESC-CAL-SEG-0012
-
-**Nombre**  
-Solicitud de recuperación con correo registrado
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Recuperación de credenciales
-
-**Característica**  
-La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes.
-
-**Objetivo**  
-Permitir que un empleado solicite restablecimiento mediante su correo registrado.
-
-**Criterios de éxito**  
-Se envían instrucciones y se muestra confirmación de solicitud.
-
-**Prerrequisitos**  
-1. El correo pertenece a un empleado registrado.
-
-**Requisito relacionado**  
-RF-75
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0012 |
+| **Nombre** | Solicitud de recuperación con correo registrado |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Recuperación de credenciales |
+| **Característica** | La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes. |
+| **Objetivo** | Permitir que un empleado solicite restablecimiento mediante su correo registrado. |
+| **Criterios de éxito** | Se envían instrucciones y se muestra confirmación de solicitud. |
+| **Prerrequisitos** | 1. El correo pertenece a un empleado registrado. |
+| **Requisito relacionado** | RF-75 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Solicita recuperar la contraseña usando su correo. | Operación normal | Módulo de autenticación | Genera y envía las instrucciones de restablecimiento. | Se muestra la confirmación definida y se inicia el proceso de recuperación. |
 
+---
+
 ### ESC-CAL-SEG-0013
 
-**Código**  
-ESC-CAL-SEG-0013
-
-**Nombre**  
-Solicitud de recuperación con correo no registrado
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Recuperación de credenciales
-
-**Característica**  
-La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes.
-
-**Objetivo**  
-Evitar la enumeración de cuentas durante la recuperación de contraseña.
-
-**Criterios de éxito**  
-Se muestra el mismo mensaje de confirmación usado para un correo registrado.
-
-**Prerrequisitos**  
-1. El correo no pertenece a ninguna cuenta.
-
-**Requisito relacionado**  
-RF-75
-
-**Tipo de escenario**  
-Fallo controlado
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0013 |
+| **Nombre** | Solicitud de recuperación con correo no registrado |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Recuperación de credenciales |
+| **Característica** | La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes. |
+| **Objetivo** | Evitar la enumeración de cuentas durante la recuperación de contraseña. |
+| **Criterios de éxito** | Se muestra el mismo mensaje de confirmación usado para un correo registrado. |
+| **Prerrequisitos** | 1. El correo no pertenece a ninguna cuenta. |
+| **Requisito relacionado** | RF-75 |
+| **Tipo de escenario** | Fallo controlado |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Solicita recuperar contraseña con un correo no registrado. | Operación con falla en recuperación de contraseña | Módulo de autenticación | No revela si el correo existe y muestra el mensaje genérico de solicitud. | La respuesta visible no permite distinguir entre correo registrado y no registrado. |
 
+---
+
 ### ESC-CAL-SEG-0014
 
-**Código**  
-ESC-CAL-SEG-0014
-
-**Nombre**  
-Restablecimiento con código válido
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Recuperación de credenciales
-
-**Característica**  
-La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes.
-
-**Objetivo**  
-Permitir establecer una nueva contraseña usando un enlace o código vigente.
-
-**Criterios de éxito**  
-La contraseña se actualiza y se confirma el cambio.
-
-**Prerrequisitos**  
-1. El enlace o código es válido y vigente.
-
-**Requisito relacionado**  
-RF-76
-
-**Tipo de escenario**  
-Éxito
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0014 |
+| **Nombre** | Restablecimiento con código válido |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Recuperación de credenciales |
+| **Característica** | La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes. |
+| **Objetivo** | Permitir establecer una nueva contraseña usando un enlace o código vigente. |
+| **Criterios de éxito** | La contraseña se actualiza y se confirma el cambio. |
+| **Prerrequisitos** | 1. El enlace o código es válido y vigente. |
+| **Requisito relacionado** | RF-76 |
+| **Tipo de escenario** | Éxito |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
 | Empleado | Envía una nueva contraseña con un enlace o código válido. | Operación normal | Módulo de autenticación | Actualiza la contraseña y confirma la operación. | La nueva contraseña queda registrada y el código utilizado deja de ser necesario para completar el cambio. |
 
+---
+
 ### ESC-CAL-SEG-0015
 
-**Código**  
-ESC-CAL-SEG-0015
-
-**Nombre**  
-Restablecimiento con código inválido o vencido
-
-**Atributo de calidad**  
-Seguridad
-
-**Categoría**  
-Recuperación de credenciales
-
-**Característica**  
-La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes.
-
-**Objetivo**  
-Impedir cambios de contraseña con credenciales de recuperación inválidas.
-
-**Criterios de éxito**  
-El sistema rechaza la operación y mantiene la contraseña anterior.
-
-**Prerrequisitos**  
-1. El enlace o código es inválido o vencido.
-
-**Requisito relacionado**  
-RF-76
-
-**Tipo de escenario**  
-Fallo controlado
+| Campo | Valor |
+|-------|-------|
+| **Código** | ESC-CAL-SEG-0015 |
+| **Nombre** | Restablecimiento con código inválido o vencido |
+| **Atributo de calidad** | Seguridad |
+| **Categoría** | Recuperación de credenciales |
+| **Característica** | La recuperación de contraseña debe evitar revelar si un correo está registrado y debe aceptar únicamente enlaces o códigos válidos y vigentes. |
+| **Objetivo** | Impedir cambios de contraseña con credenciales de recuperación inválidas. |
+| **Criterios de éxito** | El sistema rechaza la operación y mantiene la contraseña anterior. |
+| **Prerrequisitos** | 1. El enlace o código es inválido o vencido. |
+| **Requisito relacionado** | RF-76 |
+| **Tipo de escenario** | Fallo controlado |
 
 | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta |
 |---------------------|----------|----------|-----------|-----------|------------------------|
