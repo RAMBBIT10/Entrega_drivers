@@ -2466,28 +2466,5 @@ En el sistema solo existen dos roles de acceso:
 | Propia del proyecto | Metodología | Desarrollo con metodología ágil. | Varias decisiones se han ido ajustando durante el proceso. |
 | Propia del proyecto | Prácticas DevOps | Propender por automatizar pruebas y despliegues. | Reducir errores manuales y entregar cambios de forma confiable. |
 
----
 
-## Supuestos y restricciones adicionales
 
-### Supuestos
-
-- Servingeniería opera desde una sola bodega física de materiales.
-- El área de contabilidad seguirá gestionando precios y facturación de forma independiente al sistema.
-
-### Restricciones
-
-- El sistema no incluye precios, facturación electrónica ni reportes para la DIAN.
-- No se contemplan productos que requieran tratamiento regulatorio especial.
-- No se implementan más niveles de permisos que la distinción entre empleado y administrador.
-- El catálogo de estados no es editable desde la operación diaria.
-- El producto, el empleado, las categorías y los catálogos no manejan un estado de activo o inactivo en esta versión.
-
-### Pendientes de confirmar
-
-- Qué ocurre cuando se cancela un pedido o proyecto que ya tiene entradas o salidas parcialmente completadas.
-- Si el pedido debe registrar los productos y cantidades solicitados desde el momento de su creación, o si es suficiente registrarlos al momento de la entrada.
-- Si eliminar por completo la cuenta de un empleado puede afectar el historial de pedidos, entradas y salidas que ese empleado haya registrado.
-- Nivel de conocimiento tecnológico real de los empleados de campo.
-- Qué funcionalidades quedan fuera de la primera fase en caso de restricción de presupuesto o tiempo.
-- Catálogo de estados: fijo, no editable por el usuario.
